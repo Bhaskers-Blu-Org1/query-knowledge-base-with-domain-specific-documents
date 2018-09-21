@@ -55,7 +55,7 @@ described in detail below.
 1. [Accessing the user interface](#7-accessing-the-user-interface)
 1. [Set up the Notebook](#set-up-the-notebook)
 1. [Detailed Algortihm](#detailed-algorithm)
-
+1. [Analyze the Results](#detailed-algorithm)
 ## 1. Sign up for Watson Studio
 
 Sign up for IBM's [Watson Studio](http://dataplatform.ibm.com/). By creating a project in Watson Studio a free tier ``Object Storage`` service will be created in your IBM Cloud account
@@ -139,6 +139,21 @@ Problem Statement: Given an unstructured document, the system must be able to a
 3. Extraction of Entities and Relationships: The problem is now reduced to the system being able to answer questions by querying the knowledge graph built in the previous step. When the user poses a question the questions is first represented in the form of POS tags. Using chunking we extract the nouns as entities and the verbs as relations.
 
 4. Querying Knowledge Graph for Answers: The obtained knowledge graph is made a table of triplets- (node1, node2, relations). Using fuzzy logic techniques the entities and relations obtained from the question is searched for in the knowledge graph table. Thus, if a question is contains either one of the nodes and the relation, the answer to the question is bound to the other node. This way we can answer questions from any given document.
+
+# Analyze the Results
+ Run the notebook. The Node-Red Application would be deployed. On the UI you can ask the following questions, 
+* Where is Fred Hutchinson Cancer Research Center based?
+* Where does Suresh H Advani resides? 
+* Where is Seattle located at?
+
+
+The two relevant nodes to the question and an edge connecting to them will be highlighted on the UI. And also, in the notebook to visualize the answer and to dig deeper in how it is getting the right answer, run the cell of the notebook calling `getAnswerForQuery` function.
+
+```bash
+ print("******************"+getAnswerForQuery("Where is Fred Hutchinson Cancer Research Center based?")+"******************")
+ print("******************"+getAnswerForQuery(" Where is Seattle located at?")+"******************")
+ print("******************"+getAnswerForQuery('Where does Suresh H Advani resides?')+"******************")
+ ```
 
 # Troubleshooting
 
